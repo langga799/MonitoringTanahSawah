@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "760984126763",
+    "firebase_url": "https://monitoring-tanah-sawah-bd90f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "monitoring-tanah-sawah-bd90f",
+    "storage_bucket": "monitoring-tanah-sawah-bd90f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760984126763:android:aa23a34984e669574db16e",
+        "android_client_info": {
+          "package_name": "com.example.monitoringtanahsawah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760984126763-l9hje0n7923gtb8ara7js7f2id2po0he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlMUhRsYISxEhjZLzOs3JfDcGzq6E7iME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760984126763-l9hje0n7923gtb8ara7js7f2id2po0he.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
