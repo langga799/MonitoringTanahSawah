@@ -1,6 +1,7 @@
 package com.example.monitoringtanahsawah.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,8 @@ class MonitoringActivity : AppCompatActivity() {
         databaseReference.child("monitoring").child("kelembaban_tanah") // child untuk akses db
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    snapshot.value.toString().toFloat().let { data ->
+                    val dataKelembabanTanah = snapshot.value.toString()
+                    dataKelembabanTanah.toFloat().let { data ->
                         binding.kelembabanTanah.progress = data // Me-set nilai kelembaban tanah ke progress bar
                         (data.toInt().toString() + "%").also {
                             binding.tvKelembabanTanah.text = it // Set nilai kelembaban tanah ke text view
@@ -49,29 +51,32 @@ class MonitoringActivity : AppCompatActivity() {
         databaseReference.child("monitoring").child("ph") // child nilai ph
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    snapshot.value.toString().toInt().let { nilaiPH ->
+                    snapshot.value.toString().toFloat().let { nilaiPH ->
                         binding.ph.apply {
                             when (nilaiPH) { // validasi nilai ph
-                                in 6..7 -> { // jika diantara 6-7 ph normal
+                                in 6.0F..7.0F -> { // jika diantara 6-7 ph normal
                                     progressColor =
                                         ContextCompat.getColor(this@MonitoringActivity,
                                             R.color.green)// atur warna hijau progres bar PH
                                     "Normal".also { binding.tvStatus.text = it }
                                     binding.tvPh.text = nilaiPH.toString() // set nilai ph ke text view
                                 }
-                                in 0..5 -> { // jika 0-5 ph asam
+                                in 0.0F..5.0F -> { // jika 0-5 ph asam
                                     progressColor =
                                         ContextCompat.getColor(this@MonitoringActivity,
                                             R.color.asam)// atur warna merah progres bar PH
                                     "Asam".also { binding.tvStatus.text = it }
                                     binding.tvPh.text = nilaiPH.toString()
                                 }
-                                in 8..14 -> { // jika 8-14 ph basa
+                                in 8.0F..14.0F -> { // jika 8-14 ph basa
                                     progressColor =
                                         ContextCompat.getColor(this@MonitoringActivity,
                                             R.color.basa) // atur warna biru progres bar PH
                                     "Basa".also { binding.tvStatus.text = it }
                                     binding.tvPh.text = nilaiPH.toString()
+                                }
+                                else -> {
+                                    "pH tidak diketahui".also { binding.tvStatus.text = it }
                                 }
                             }
 
