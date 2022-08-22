@@ -33,7 +33,7 @@ class MonitoringActivity : AppCompatActivity() {
                     val dataKelembabanTanah = snapshot.value.toString()
                     dataKelembabanTanah.toFloat().let { data ->
                         binding.kelembabanTanah.progress = data // Me-set nilai kelembaban tanah ke progress bar
-                        (data.toInt().toString() + "%").also {
+                        ("$data%").also {
                             binding.tvKelembabanTanah.text = it // Set nilai kelembaban tanah ke text view
                         }
                     }
