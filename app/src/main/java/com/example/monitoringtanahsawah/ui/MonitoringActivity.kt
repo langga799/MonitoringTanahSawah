@@ -97,19 +97,19 @@ class MonitoringActivity : AppCompatActivity() {
 
 
         // get nilai listrik dc
-        databaseReference.child("monitoring").child("listrik_dc")
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    snapshot.value.toString().let { nilaiVoltDC ->
-                        binding.adc.text = nilaiVoltDC  //set nilai ke text view
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(this@MonitoringActivity, error.message, Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-            })
+//        databaseReference.child("monitoring").child("listrik_dc")
+//            .addValueEventListener(object : ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    snapshot.value.toString().let { nilaiVoltDC ->
+//                        binding.adc.text = nilaiVoltDC  //set nilai ke text view
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    Toast.makeText(this@MonitoringActivity, error.message, Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//
+//            })
     }
 }
